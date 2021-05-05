@@ -35,14 +35,14 @@ h2, h3 {
 }
 
 .button-container {
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40px;
 }
 
-.button {
+button {
     padding: 0.7em 1.4em;
     margin: 0 0.3em 0.3em 0;
     border-radius: 0.15em;
@@ -77,9 +77,11 @@ h2, h3 {
 }
 
 .video {
-    position: fixed;
-    bottom: 1;
-    right: 0;
+    margin-top: 40px;
+    margin-left: 455px;
+    display: flex;
+    justify-self: center;
+    align-self: center;
 }
 
 @media all and (max-width:30em) {

@@ -1,15 +1,15 @@
 const vid = document.querySelector(".video");
-const startElem = document.querySelector("button");
-const stopElem = document.querySelector("stop");
+const startElem = document.querySelector(".button");
+const stopElem = document.querySelector(".stop");
+const popElem = document.querySelector(".popout");
 var displayMediaOptions = {
     video: {
         cursor: "always"
     },
     audio: true
 };
-startElem.addEventListener("click", async function (evt) {
+startElem.addEventListener("click", function (evt) {
     startCapture();
-    await vid.requestPictureInPicture();
 }, false);
 
 stopElem.addEventListener("click", function (evt) {
@@ -20,7 +20,7 @@ async function startCapture(displayMediaOptions) {
 
     try {
         const captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-
+        vid.setAttribute("vid", "hidden=false");
         vid.srcObject = captureStream;
         vid.onloadedmetadata = () => {
             vid.play();
@@ -31,3 +31,13 @@ async function startCapture(displayMediaOptions) {
     }
     return captureStream;
 }
+function stopCapture(evt) {
+    let tracks = vid.srcObject.getTracks();
+
+    tracks.forEach(track => track.stop());
+    vid.srcObject = null;
+}
+
+popElem.addEventListener("click", async () => {
+    await vid.requestPictureInPicture();
+})

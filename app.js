@@ -20,7 +20,6 @@ async function startCapture(displayMediaOptions) {
 
     try {
         const captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-        vid.setAttribute("vid", "hidden=false");
         vid.srcObject = captureStream;
         vid.onloadedmetadata = () => {
             vid.play();
